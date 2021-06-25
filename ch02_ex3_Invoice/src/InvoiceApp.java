@@ -20,12 +20,12 @@ public class InvoiceApp {
 
             // calculate the discount amount and total
             double discountPercent;
-            if (subtotal >= 200) {
+            if (subtotal >= 500) {
+                discountPercent = .25;
+            } else if (subtotal >= 200) {
                 discountPercent = .2;
             } else if (subtotal >= 100) {
-                discountPercent = .1;
-            } else if (subtotal >= 500) {
-            	discountPercent = .25;
+            	discountPercent = .1;
         	} else {
                 discountPercent = 0.0;
             }
