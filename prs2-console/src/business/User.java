@@ -25,6 +25,10 @@ public class User {
 		this.admin = admin;
 	}
 
+	public User() {
+		super();
+	}
+
 	public int getId() {
 		return id;
 	}
@@ -103,6 +107,7 @@ public class User {
 				+ ", lastName=" + lastName + ", phoneNumber=" + phoneNumber + ", email=" + email + ", reviewer="
 				+ reviewer + ", admin=" + admin + "]";
 	}
+	
 	
 
 }

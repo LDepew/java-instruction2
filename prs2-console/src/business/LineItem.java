@@ -9,15 +9,13 @@ public class LineItem {
 	public LineItem() {
 	}
 	
-	
 	public LineItem(int inID, int inPrID, int inPdtID, int inQty) {
 		id = inID;
 		requestID = inPrID;
 		productID = inPdtID;
 		quantity = inQty;
 	}
-
-
+	
 	public int getId() {
 		return id;
 	}
@@ -42,13 +40,11 @@ public class LineItem {
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
-	
+
 	@Override
 	public String toString() {
 		return "purchaseRequestLineItem [id=" + id + ", requestID=" + requestID + ", productID="
-					+ productID + ", quantity=" + quantity + "]";
+				+ productID + ", quantity=" + quantity + "]";
 	}
-	
-	
 
 }

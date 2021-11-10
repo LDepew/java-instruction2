@@ -2,7 +2,10 @@ package db;
 
 import java.util.List;
 
-public class DAO {
+import business.User;
+
+//p. 479
+public interface DAO<T> {
 	T getById(int id);
 	List<T> getAll();
 	boolean add(T t);

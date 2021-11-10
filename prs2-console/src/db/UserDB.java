@@ -12,48 +12,49 @@ import business.User;
 
 public class UserDB implements DAO<User> {
 	
-	private Connection getConnection() throws SQL Exception {
+	private Connection getConnection() throws SQLException {
 		String dbURL = "jdbc:mysql://localhost:3306/prs?useSSL=false&allowPublicKeyRetrieval=true";
-		String userName = "prs_user";
-		String password = "sesame";
+		String userName = "prs_user" ;
+		String password = "sesame" ;
 		Connection conn = DriverManager.getConnection(dbURL, userName, password);
 		return conn;
 	}
-	
+
 	@Override
-	Public User getById(int id) {
+	public User getById(int id) {
 		User u = null;
 		String sql = "select * from user where id = ?";
 		try {
 			Connection conn = getConnection();
 			PreparedStatement ps = conn.prepareStatement(sql);
-			ps.setInt(l, id);
+			ps.setInt(1, id);
 			ResultSet rs = ps.executeQuery();
 			if (rs.next()) {
 				u = getUserFromResultSet(rs);
 			}
 			conn.close();
 		}
-			catch (SQLException e) {
-				System.err.println("Error getting user by id");
-				e.printStackTrace(););
+		 catch (SQLException e) {
+				System.err.println("Error getting user by id.");
+				e.printStackTrace();
 			}
+
 		return u;
 	}
-	
+
 	@Override
 	public List<User> getAll() {
 		List<User> user = new ArrayList<>();
 		String sql = "select * from user";
 		try (Connection conn = getConnection();
-				PreparedStatement ps = conn.prepareStatement(sql);
-				ResultSet rs = ps.executeQuery()) {
+			 PreparedStatement ps = conn.prepareStatement(sql);
+			 ResultSet rs = ps.executeQuery()) {
 			while (rs.next()) {
 				User u = getUserFromResultSet(rs);
 				user.add(u);
 			}
 		} catch (SQLException e) {
-			System.err.println("Error getting all users.");
+			System.err.println("Error gettin all users.");
 			e.printStackTrace();
 		}
 		return user;
@@ -67,21 +68,21 @@ public class UserDB implements DAO<User> {
 		String lastName = rs.getString(5);
 		String phoneNumber = rs.getString(6);
 		String email = rs.getString(7);
-		boolean isReviwer = rs.getBoolean(8);
+		boolean isReviewer = rs.getBoolean(8);
 		boolean isAdmin = rs.getBoolean(9);
 		User u = new User(id, userName, password, firstName, lastName,
 							phoneNumber, email, isReviewer, isAdmin);
 		return u;
 	}
-	
+
 	@Override
 	public boolean add(User u) {
 		boolean success = false;
 		String sql = "insert into user (userName, password, firstName, lastName,"
 				+ "phoneNumber, email, isReviewer, isAdmin) " +
-				"values (?, ?, ?, ?, ?, ?, ?, ?)";
+					 "values (?, ?, ?, ?, ?, ?, ?, ?)";
 		try (Connection conn = getConnection();
-				PreparedStatement ps = conn.prepareStatement(sql)) {
+			 PreparedStatement ps = conn.prepareStatement(sql)) {
 			ps.setString(1, u.getUserName());
 			ps.setString(2, u.getPassword());
 			ps.setString(3, u.getFirstName());
@@ -98,25 +99,26 @@ public class UserDB implements DAO<User> {
 		}
 		return false;
 	}
-	
+
 	@Override
 	public boolean update(User t) {
+		// TODO Auto-generated method stub
 		return false;
 	}
-	
+
 	@Override
 	public boolean delete(User u) {
 		boolean success = false;
 		String sql = "delete from user where id = ?";
 		try (Connection conn = getConnection();
-				PreparedStatement ps = conn.prepareStatement(sql)) {
+				 PreparedStatement ps = conn.prepareStatement(sql)) {
 				ps.setInt(1, u.getId());
 				ps.executeUpdate();
 				success = true;
-		} catch (SQLException e) {
-			System.err.println("Error deleting user.");
-			e.printStackTrace();
-		}
+			} catch (SQLException e) {
+				System.err.println("Error deleting user.");
+				e.printStackTrace();
+			}
 		return false;
 	}
 

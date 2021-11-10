@@ -9,7 +9,7 @@ public class Product {
 	private String unit;
 	private String photoPath;
 	
-	public Product () {
+	public Product() {
 		id = 0;
 		vendorID = 0;
 		vendorPartNumber = "";
@@ -18,18 +18,18 @@ public class Product {
 		unit = "";
 		photoPath = "";
 	}
-	public Product(int id, int vendorID, String vendorPartNumber, String name, double price, String unit,
-			String photoPath) {
-		super();
-		this.id = id;
-		this.vendorID = vendorID;
-		this.vendorPartNumber = vendorPartNumber;
-		this.name = name;
-		this.price = price;
-		this.unit = unit;
-		this.photoPath = photoPath;
-	}
 	
+	public Product(int inId, int inVID, String inVPartNumber, String inName, 
+					double inPrice, String inUnit, String inPhotoPath) {
+		id = inId;
+		vendorID = inVID;
+		vendorPartNumber = inVPartNumber;
+		name = inName;
+		price = inPrice;
+		unit = inUnit;
+		photoPath = inPhotoPath;
+	}
+
 	public int getId() {
 		return id;
 	}
@@ -75,14 +75,8 @@ public class Product {
 	
 	@Override
 	public String toString() {
-		return "Product [id=" + id + ", vendorId=" + vendorID + ", vendorPartNumber=" + vendorPartNumber + ", name="
+		return "Product [id=" + id + ", vendorID=" + vendorID + ", vendorPartNumber=" + vendorPartNumber + ", name="
 				+ name + ", price=" + price + ", unit=" + unit + ", photoPath=" + photoPath + "]";
 	}
 	
-	
-	
-	
-	
-	
-
 }
