@@ -59,7 +59,7 @@ public class BitwiseShift {
 			}
 			val <<= 1;
 		}
-		System.out.println();
+		System.out.println();	
 	}
 
 }
