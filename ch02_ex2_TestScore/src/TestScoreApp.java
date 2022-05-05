@@ -25,15 +25,14 @@ public class TestScoreApp {
             if (testScore <= 100) {
                 scoreCount = scoreCount + 1;
                 scoreTotal = scoreTotal + testScore;
-            }
-            else if (testScore != 999) {
+            } else if (testScore > 100 && testScore < 999) {
             	System.out.println("Invalid entry; not counted");
             }
         }
 
         // display the score count, score total, and average score
-        //double averageScore = (double) scoreTotal / scoreCount;
-        double averageScore = 0.0;
+        double averageScore = 0.0; 
+        
         if (scoreCount > 0) {
         	averageScore = (double) scoreTotal / scoreCount;
         }
