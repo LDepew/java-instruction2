@@ -10,14 +10,10 @@ public class InvoiceApp {
         // create a Scanner object named sc
         @SuppressWarnings("resource")
 		Scanner sc = new Scanner(System.in);
-        
-        double invoiceTotal = 0.0;
-        double discountTotal = 0.0;
-        int invoiceCount = 0;
 
         // perform invoice calculations until choice isn't equal to "y" or "Y"
         String choice = "y";
-        while (!(choice.equalsIgnoreCase("n"))) {
+        while (!choice.equalsIgnoreCase("n")) {
             // get the invoice subtotal from the user
             System.out.print("Enter subtotal:   ");
             double subtotal = sc.nextDouble();
@@ -25,20 +21,16 @@ public class InvoiceApp {
             // calculate the discount amount and total
             double discountPercent;
             if (subtotal >= 500) {
-                discountPercent = .25;
+            	discountPercent = .25;
             } else if (subtotal >= 200) {
                 discountPercent = .2;
             } else if (subtotal >= 100) {
-            	discountPercent = .1;
-        	} else {
+                discountPercent = .1;
+            } else {
                 discountPercent = 0.0;
             }
             double discountAmount = subtotal * discountPercent;
             double total = subtotal - discountAmount;
-            
-            invoiceTotal = invoiceTotal + total;
-            discountTotal = discountTotal + discountAmount;
-            invoiceCount = invoiceCount + 1;
 
             // display the discount amount and total
             String message = "Discount percent: " + discountPercent + "\n"
@@ -51,9 +43,5 @@ public class InvoiceApp {
             choice = sc.next();
             System.out.println();
         }
-            String message = "Number of invoices: " + invoiceCount + "\n"
-            			+ "Average invoice: " + invoiceTotal / invoiceCount + "\n"
-            			+ "Average discount: " + discountTotal / invoiceCount + "\n";
-            System.out.println(message);
     }
 }
